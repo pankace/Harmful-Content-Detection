@@ -4,11 +4,10 @@ import numpy as np
 # YOU MUST HAVE THE SUPPORTING FUNCTIONS PYTHON FILE IN THE SAME DIRECTORY
 from support_fuctions import dataframe_generator, tokenization, remove_emojis, inpurity_purging_protocol
 
-# Uses the english translations of the tweets. 
-# Its also in this directory
+# Uses the english translations of the tweets
 file_path = r"C:\Users\Tomy\PycharmProjects\Experiment - 7\Industrial machine learning course files\Racism classification\Data analysis\tranlated_tweets.csv"
 source_data = pd.read_csv(file_path)
-developer_mode = 0
+developer_mode = 1
 loop_viewer = 0
 
 print("<------------------>")
@@ -98,6 +97,20 @@ for pre_purge in tokenized_conversion:
 
 # Calculate unique tokens after stop words removal
 unique_tokens, counts = np.unique(post_purge_storage, return_counts=True)
+
+max_value = max(counts)
+index_coordinates = 0
+for values in range(len(counts)):
+    if counts[values] == max_value:
+        index_coordinates = values
+        break
+
+# Out of the box random analysis
+print(f"Max value: {max_value}")
+print(f"Index coordinate of max value: {index_coordinates}")
+print(f"Token at corresponding coordinate: {post_purge_storage[index_coordinates]}")
+
+# Zips everything into a dictionary
 token_counts = dict(zip(unique_tokens, counts))
 
 # Prepare for dataframe generation
@@ -105,7 +118,10 @@ token_keys = list(token_counts.keys())
 token_values = list(token_counts.values())
 token_des_column = ["Unique tokens", "Total tokens", "Percentage of unique tokens"]
 token_res_column = [len(unique_tokens), sum(counts), f"{(len(unique_tokens) / sum(counts) * 100)} %"]
-multithreading_deployment = 1
+
+# Enable this multithread deployment to get the csv files
+# I disabled it because its not required anymore
+multithreading_deployment = 0
 if multithreading_deployment == 1:
     if __name__ == "__main__":
         t1 = threading.Thread(target=dataframe_generator(asociation_text, asociation_target, c1="Cleaned tweet", c2="Tags", column_name="Purification verification", developer_mode=developer_mode))
