@@ -148,9 +148,8 @@ Accuracy: 79.0%
 Precision: 79.43262%
 Recall: 76.71233%
 F1-Score: 78.04878%
-Start time:1709325266.5037045
-End time: 1709325269.952096
 Processing time: 3.4483914375305176 seconds
 
 Observation: Any attempt to increase accuracy makes these metrics decrease. Any assist is welcomed.
+Note: The processing time fluctuates drasticallly from 3.45 seconds to sometimes 8 seconds. Do not consider that an important consideration or anything if it stays in the seconds for processing time.
 """
