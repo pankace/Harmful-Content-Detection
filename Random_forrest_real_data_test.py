@@ -151,5 +151,5 @@ F1-Score: 78.04878%
 Processing time: 3.4483914375305176 seconds
 
 Observation: Any attempt to increase accuracy makes these metrics decrease. Any assist is welcomed.
-Note: The processing time fluctuates drasticallly from 3.45 seconds to sometimes 8 seconds. Do not consider that an important consideration or anything if it stays in the seconds for processing time.
+Note: The processing time fluctuates drastically from 3.45 seconds to sometimes 8 seconds. Do not consider that an important consideration or anything if it stays in the seconds for processing time.
 """
