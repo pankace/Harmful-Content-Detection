@@ -89,7 +89,7 @@ Training and Validation: Distil-BERT is used to get embeddings of an input sente
 
 
 # 5. Conclusion
-The dataset we used is annotated from this research. We preprocessed it into a usable format. The dataset was analyzed and some insights about token distribution were found. We then explored two different methods of vectorizing sentences, including TF-IDF and embeddings, and found that embeddings give better performance in general because 
+The dataset we used is annotated from [this research](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC9044360/). We preprocessed it into a usable format. The dataset was analyzed and some insights about token distribution were found. We then explored two different methods of vectorizing sentences, including TF-IDF and embeddings, and found that embeddings give better performance in general because of their ability to capture the semantics of languages. From model exploration, we found that using logistic regression and random forest on sentence embedding already had both a great performance of 79% accuracy and a small model size. While LSTM and transformers, theoretically, should have better performance because of their ability to make use of sequential information in sentences, they gave similar performance but with more complex architecture and more resource consumption in our experiment. Overall performance should be improved with a larger dataset, especially of neural network models. 
 
  
 # 6. Future Work
