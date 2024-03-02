@@ -1,9 +1,4 @@
-import nltk
-nltk.download('stopwords')
-nltk.download('wordnet')
-
 import threading
-from nltk.corpus import stopwords
 import pandas as pd
 import numpy as np
 from support_fuctions import numeric_analysis_arm, enhanced_diagnostics, dataframe_generator, tokenization, remove_emojis, inpurity_purging_protocol
