@@ -1,8 +1,11 @@
 import threading
 import pandas as pd
 import numpy as np
-from support_fuctions import numeric_analysis_arm, enhanced_diagnostics, dataframe_generator, tokenization, remove_emojis, inpurity_purging_protocol
+# YOU MUST HAVE THE SUPPORTING FUNCTIONS PYTHON FILE IN THE SAME DIRECTORY
+from support_fuctions import dataframe_generator, tokenization, remove_emojis, inpurity_purging_protocol
 
+# Uses the english translations of the tweets. 
+# Its also in this directory
 file_path = r"C:\Users\Tomy\PycharmProjects\Experiment - 7\Industrial machine learning course files\Racism classification\Data analysis\tranlated_tweets.csv"
 source_data = pd.read_csv(file_path)
 developer_mode = 0
@@ -30,30 +33,6 @@ if developer_mode == 1:
 elif developer_mode == 0:
     print("Developer mode inactive")
 print("<------------------>")
-print()
-print(f"Analysis compatible columns: {analysis_compatible_columns}")
-numeric_columns = []
-object_columns = []
-
-input_mode = True
-print("Type '-1' when no more target columns are needed.")
-while input_mode == True:
-    target = "-1" #input("Column name: ")
-    if target == "-1":
-        input_mode = False
-    elif target != "-1":
-        numeric_columns.append(target)
-
-locked_in_columns = numeric_columns
-print("Numeric analysis columns:")
-print(locked_in_columns)
-
-for names in locked_in_columns:
-    c_name_analysis_input = names
-    column_isolation = source_data[c_name_analysis_input].to_numpy()
-    if type(c_name_analysis_input) == str and (type(column_isolation) == list or type(column_isolation) == np.ndarray):
-        numeric_analysis_arm(c_name_analysis_input,column_isolation,developer_mode)
-        enhanced_diagnostics(c_name_analysis_input,column_isolation,developer_mode)
 
 text_isolation = source_data["Description Cleaned Translated"].to_numpy()
 text_isolation = inpurity_purging_protocol(text_isolation)
@@ -74,7 +53,6 @@ if len(target_isolation) == len(text_isolation):
     print(f"Target isolated data: {len(target_isolation)}")
     print(f"Text isolated data: {len(text_isolation)}")
 
-
 zero = 0
 one = 0
 asociation_text = []
@@ -83,18 +61,16 @@ if len(target_isolation) == len(text_isolation):
     for elements in range(len(target_isolation)):
         asociation_text.append(text_isolation[elements])
         asociation_target.append(target_isolation[elements])
-
         if target_isolation[elements] == 0:
             zero += 1
         elif target_isolation[elements] == 1:
             one += 1
 
 full_set = one + zero
-print(f"Full set: {full_set}")
-
 if developer_mode == 1:
-    print(f"Zero targets: {zero}")
-    print(f"Ones targets: {one}")
+    print(f"Flagged: {one}")
+    print(f"Cleared: {zero}")
+    print(f"Full set: {full_set}")
 
 if full_set != 0:
     zero_percentage = (zero / full_set) * 100
@@ -132,7 +108,7 @@ token_res_column = [len(unique_tokens), sum(counts), f"{(len(unique_tokens) / su
 multithreading_deployment = 1
 if multithreading_deployment == 1:
     if __name__ == "__main__":
-        t1 = threading.Thread(target=dataframe_generator(asociation_text, asociation_target, c1="Cleaned tweet", c2="Tag", column_name="Purification verification", developer_mode=developer_mode))
+        t1 = threading.Thread(target=dataframe_generator(asociation_text, asociation_target, c1="Cleaned tweet", c2="Tags", column_name="Purification verification", developer_mode=developer_mode))
         t2 = threading.Thread(target=dataframe_generator(description, results, c1="Cleared/Flagged quantity", c2="Analysis output", column_name="Tags analysis", developer_mode=developer_mode))
         t3 = threading.Thread(target=dataframe_generator(token_des_column, token_res_column, c1="Token details", c2="Token count", column_name="Token analysis", developer_mode=developer_mode))
         t4 = threading.Thread(target=dataframe_generator(token_keys, token_values, c1="Individual words", c2="Occurrences", column_name="Frequency of token usage", developer_mode=developer_mode))
