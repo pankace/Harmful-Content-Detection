@@ -144,11 +144,11 @@ Prediction: [0 1 1 1 1 0 1 0 1 1 0 0 0 1 1 0 1 0 0 0 1 0 0 1 0 0 0 1 1 0 1 1 1 1
  0 0 0 1 1 1 0 1 0 0 1 1 1 1 0 0 1 1 0 0 1 1 0 0 1 0 0 0 1 1 1 1 0 0 1 1 1
  0 0 0 1 0 1 0 1 1 0 0 0 0 1 0 0 0 1 1 0 0 0 0 1 0 0 1 1 0 0 1 0 0 0 0 0 1
  1 0 0 1]
-Accuracy: 79.0%
-Precision: 79.43262%
-Recall: 76.71233%
-F1-Score: 78.04878%
-Processing time: 3.4483914375305176 seconds
+Accuracy: 0.79
+Precision: 0.7943
+Recall: 0.7671
+F1: 0.7805
+Processing time: 7.450774669647217 seconds
 
 Observation: Any attempt to increase accuracy makes these metrics decrease. Any assist is welcomed.
 Note: The processing time fluctuates drastically from 3.45 seconds to sometimes 8 seconds. Do not consider that an important consideration or anything if it stays in the seconds for processing time.
