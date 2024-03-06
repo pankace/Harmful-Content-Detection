@@ -29,11 +29,12 @@ def binary_classifier(X, y):
         return accuracy, precision, recall, f1
 
     upgrade_deployment = 0
+
     if type(y) != np.ndarray:
         y = np.array(y)
 
     if upgrade_deployment == 1:
-        svd = TruncatedSVD(n_components=75)
+        svd = TruncatedSVD(n_components=78)
         X = svd.fit_transform(X)
     # Split the data into training and testing sets
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=42)
@@ -42,9 +43,8 @@ def binary_classifier(X, y):
 
     # Prediction
     prediction = model.predict(X_test)
-    print(f"Prediction: {prediction}")
     accuracy_metric, precision_metric, recall_metric, f1_metric = error_metrics(y_test, prediction)
-    return accuracy_metric, precision_metric, recall_metric, f1_metric
+    return accuracy_metric, precision_metric, recall_metric, f1_metric, prediction, model
 
 def remove_stopwords_from_text(tokens, stop_words_applied):
     assert(type(tokens) == list or type(tokens) == np.ndarray)
@@ -117,7 +117,8 @@ if type(y) != np.ndarray:
     y = np.array(y)
 print(f"X type: {type(X)}")
 print(f"y type: {type(y)}")
-accuracy_metric, precision_metric, recall_metric, f1_metric = binary_classifier(X, y)
+accuracy_metric, precision_metric, recall_metric, f1_metric, predictions, model = binary_classifier(X, y)
+dump(model, "Random_forest_model.joblib")
 end_time = time.time()
 print(f"Accuracy: {round(accuracy_metric, 4)}")
 print(f"Precision: {round(precision_metric, 4)}")
@@ -135,7 +136,13 @@ elif processing_time >= 60:
 """
 Benchmark to beat:
 ------------------
-Prediction: [0 1 1 1 1 0 1 0 1 1 0 0 0 1 1 0 1 0 0 0 1 0 0 1 0 0 0 1 1 0 1 1 1 1 0 1 0
+It meets the minimum standard of 76.0% <= X <= 1.0% on every evaluation metric
+Accuracy: 0.79
+Precision: 0.7943262411347518
+Recall: 0.7671232876712328
+F1: 0.7804878048780488
+Predictions:
+[0 1 1 1 1 0 1 0 1 1 0 0 0 1 1 0 1 0 0 0 1 0 0 1 0 0 0 1 1 0 1 1 1 1 0 1 0
  0 1 1 0 0 1 1 0 1 1 1 0 0 1 1 0 1 1 0 1 0 1 1 0 1 0 0 0 1 0 0 0 1 0 1 0 0
  1 1 0 1 1 0 1 1 0 1 0 0 0 1 1 0 1 0 0 1 0 0 1 0 0 0 1 0 1 0 0 1 1 1 0 1 1
  0 0 0 0 1 0 0 1 0 0 0 1 1 1 0 1 1 0 1 0 0 0 1 1 0 0 0 0 0 1 1 0 1 0 1 1 1
@@ -144,11 +151,7 @@ Prediction: [0 1 1 1 1 0 1 0 1 1 0 0 0 1 1 0 1 0 0 0 1 0 0 1 0 0 0 1 1 0 1 1 1 1
  0 0 0 1 1 1 0 1 0 0 1 1 1 1 0 0 1 1 0 0 1 1 0 0 1 0 0 0 1 1 1 1 0 0 1 1 1
  0 0 0 1 0 1 0 1 1 0 0 0 0 1 0 0 0 1 1 0 0 0 0 1 0 0 1 1 0 0 1 0 0 0 0 0 1
  1 0 0 1]
-Accuracy: 0.79
-Precision: 0.7943
-Recall: 0.7671
-F1: 0.7805
-Processing time: 7.450774669647217 seconds
+Processing time: 4.091778993606567 seconds
 
 Observation: Any attempt to increase accuracy makes these metrics decrease. Any assist is welcomed.
 Note: The processing time fluctuates drastically from 3.45 seconds to sometimes 8 seconds. Do not consider that an important consideration or anything if it stays in the seconds for processing time.
