@@ -65,9 +65,7 @@ def gradient_booster(X, y):
 def upgraded_gradient_booster(X, y):
     if type(y) != np.ndarray:
         y = np.array(y)
-
-    X, y = make_classification(n_samples=1000, n_features=14, n_informative=2,
-                               n_redundant=10, random_state=42)
+        
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=42)
     #Baseline classifier
     base_clf = DecisionTreeClassifier(max_depth=1)
