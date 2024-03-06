@@ -44,6 +44,7 @@ def ml_diagnostics(y_test, predictions):
             print(f"{details[elements]}: {results[elements]}")
 
     if (accuracy > 0.9) and (precision > 0.9):
+        print()
         print(f"Go touch come grass. You got accuracy to reach {round(accuracy, 4)} and precision to reach {round(precision, 4)}")
         if (recall > 0.8) and (f1 > 0.8):
             print("Bruv. Go live life outside. This is already accurate like you had OCD writing this.")
