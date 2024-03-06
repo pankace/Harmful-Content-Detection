@@ -28,11 +28,10 @@ def binary_classifier(X, y):
 
         return accuracy, precision, recall, f1
 
-    upgrade_deployment = 0
-
     if type(y) != np.ndarray:
         y = np.array(y)
-
+    
+    upgrade_deployment = 0
     if upgrade_deployment == 1:
         svd = TruncatedSVD(n_components=78)
         X = svd.fit_transform(X)
@@ -40,7 +39,6 @@ def binary_classifier(X, y):
     X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.15, random_state=42)
     model = RandomForestClassifier(n_estimators=100, random_state=42)
     model.fit(X_train, y_train)
-
     # Prediction
     prediction = model.predict(X_test)
     accuracy_metric, precision_metric, recall_metric, f1_metric = error_metrics(y_test, prediction)
