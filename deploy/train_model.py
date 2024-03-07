@@ -76,8 +76,8 @@ class RacistContentClassifierTrainer:
             mlflow.log_artifact("Model not trained.")
 
 if __name__ == "__main__":
-    data_path = os.path.join("data", "tweets.csv")
-    model_path = os.path.join("rf_model.joblib")
+    data_path = "data/tweets.csv"
+    model_path = "rf_model.joblib"
     trainer = RacistContentClassifierTrainer(data_path=data_path, model_path=model_path)
     trainer.train()
     trainer.save_model()
