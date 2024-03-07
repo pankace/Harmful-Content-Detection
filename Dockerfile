@@ -3,6 +3,6 @@ WORKDIR /deploy
 COPY requirements.txt ./requirements.txt
 RUN pip3 install -r requirements.txt
 COPY . .
-EXPOSE 8201
+EXPOSE 8080
 ENTRYPOINT ["streamlit", "run", "--server.port", "8080"]
 CMD ["deploy/app.py"]
