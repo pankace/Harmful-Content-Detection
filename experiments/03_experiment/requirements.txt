@@ -1,1 +1,15 @@
-
+pandas
+numpy
+spacy
+re
+string
+nltk
+sklearn
+gensim
+torch
+keras
+tqdm
+collection
+transformers
+datasets
+evaluate
