@@ -1,7 +1,7 @@
 import streamlit as st
 from model import RacistContentClassifier
 
-model_path = './rf_model.joblib'
+model_path = 'rf_model.joblib'
 classifier = RacistContentClassifier(model_path)
 
 st.title('Racist Content Classifier')
