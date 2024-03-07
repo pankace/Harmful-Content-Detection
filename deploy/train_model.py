@@ -3,6 +3,7 @@ import numpy as np
 import re
 import joblib
 import mlflow
+import os
 
 from sklearn.model_selection import train_test_split, GridSearchCV
 from sklearn.ensemble import RandomForestClassifier
@@ -75,8 +76,8 @@ class RacistContentClassifierTrainer:
             mlflow.log_artifact("Model not trained.")
 
 if __name__ == "__main__":
-    data_path = '../experiments/data/tweets.csv'
-    model_path = './rf_model.joblib'
+    data_path = os.path.join("data", "tweets.csv")
+    model_path = os.path.join("rf_model.joblib")
     trainer = RacistContentClassifierTrainer(data_path=data_path, model_path=model_path)
     trainer.train()
     trainer.save_model()
