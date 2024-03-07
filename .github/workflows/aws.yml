@@ -31,8 +31,8 @@ on:
     branches: [ "main" ]
 
 env:
-  AWS_REGION: ${{ env.AWS_REGION }}                 # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: ${{ env.ECR_REPOSITORY }}         # set this to your Amazon ECR repository name
+  AWS_REGION: ap-southeast-1                   # set this to your preferred AWS region, e.g. us-west-1
+  ECR_REPOSITORY: harmful-content-detection           # set this to your Amazon ECR repository name
 
 permissions:
   contents: read
