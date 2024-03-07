@@ -1,1 +1,8 @@
-
+python minimum 3.10
+joblib
+nltk
+xgboost
+threading
+pandas
+scipy
+matplotlib
