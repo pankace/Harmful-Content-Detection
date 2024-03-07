@@ -1,5 +1,4 @@
 jupyter
-os
 streamlit==1.31
 matplotlib==3.8.0
 numpy==1.26.4
