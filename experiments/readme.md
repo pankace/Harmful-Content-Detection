@@ -2,7 +2,7 @@
 ## Detecting Racism Experiments
    **Team name:** Echo B.
    
-   **Team:** Tommaso, Philip, Valentine, Tanis
+   **Team:** Tommaso, Philip, Valentine, Pankace
 
 # 1. Introduction
 
