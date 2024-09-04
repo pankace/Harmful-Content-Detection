@@ -14,6 +14,7 @@ Detecting racism and xenophobia using deep learning models on Twitter data: CNN,
 
 This project takes on the challenge of identifying racist content in tweets through a series of machine-learning experiments. We performed data analysis to better understand the dataset, and we experimented with text representation methods like TF-IDF and embedding, and we evaluated various models, including logistic regression, random forest, LSTM, and BERT to develop an effective approach for classifying tweets.
 
+<img src = 'https://github.com/pankace/Harmful-Content-Detection/blob/main/images/Sample.JPG' alt = 'showcase'/>
 # 2. Usage
 
 First, install the required packages using the following command:
