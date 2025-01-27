@@ -19,6 +19,7 @@ This project takes on the challenge of identifying racist content in tweets thro
 # 2. Usage
 
 Run all commands from root directory
+
 First, install the required packages using the following command:
 
 ```bash
